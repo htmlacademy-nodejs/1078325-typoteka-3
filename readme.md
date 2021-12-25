@@ -1,7 +1,7 @@
 # Личный проект «Типотека» [![Build status][travis-image]][travis-url]
 
 * Студент: [Павел Головин](https://up.htmlacademy.ru/nodejs/3/user/1078325).
-* Наставник: `Неизвестно`.
+* Наставник: [Алексей Пан](https://htmlacademy.ru/profile/id1437965).
 
 ---
 
