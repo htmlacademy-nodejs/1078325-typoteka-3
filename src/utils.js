@@ -1,5 +1,7 @@
 'use strict';
 
+const minCountOfSentences = 1;
+
 const getRandomInt = (min, max) => {
   min = Math.ceil(min);
   max = Math.floor(max);
@@ -20,8 +22,14 @@ const getRandomDate = (minDay, maxDay) => {
   return new Date(new Date() - new Date(getRandomInt(minDay, maxDay) * 1000 * 60 * 60 * 24));
 };
 
+const createRandomText = (sentences, maxCount) => shuffle(sentences).slice(0, getRandomInt(minCountOfSentences, maxCount)).join(` `);
+
+const getRandomElementOfArray = (array) => array[getRandomInt(minCountOfSentences, array.length)];
+
 module.exports = {
   getRandomInt,
   shuffle,
-  getRandomDate
+  getRandomDate,
+  createRandomText,
+  getRandomElementOfArray
 };

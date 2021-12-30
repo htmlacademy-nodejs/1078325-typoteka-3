@@ -1,16 +1,16 @@
 'use strict';
 
 const fs = require(`fs`);
-const {FILE_NAME, TITLES, CATEGORIES, ANNOUNCES, DEFAULT_COUNT, minDay, maxDay} = require(`../../constants`);
-const {getRandomInt, getRandomDate, shuffle} = require(`../../utils`);
+const {FILE_NAME, TITLES, CATEGORIES, ANNOUNCES, DEFAULT_COUNT, minDay, maxDay, ExitCode} = require(`../../constants`);
+const {getRandomDate, createRandomText, getRandomElementOfArray} = require(`../../utils`);
 
 const generatePublications = (count) => {
   return new Array(count).fill({}).map(() => ({
-    title: TITLES[getRandomInt(0, TITLES.length - 1)],
+    title: getRandomElementOfArray(TITLES),
     createdDate: getRandomDate(minDay, maxDay),
-    announce: shuffle(ANNOUNCES).slice(0, getRandomInt(0, 5)).join(` `),
-    fullText: shuffle(ANNOUNCES).slice(0, getRandomInt(0, ANNOUNCES.length - 1)).join(` `),
-    category: CATEGORIES[getRandomInt(0, CATEGORIES.length - 1)]
+    announce: createRandomText(ANNOUNCES, 5),
+    fullText: createRandomText(ANNOUNCES, ANNOUNCES.length - 1),
+    category: getRandomElementOfArray(CATEGORIES)
   }));
 };
 
@@ -23,9 +23,10 @@ module.exports = {
     const content = JSON.stringify(generatePublications(countPublications));
     fs.writeFile(FILE_NAME, content, (err) => {
       if (err) {
-        return console.error(`Can't write data to file...`);
+        console.error(`Can't write data to file...`);
+        process.exit(ExitCode.failure);
       }
-      return console.info(`Operation success. File created.`);
+      console.info(`Operation success. File created.`);
     });
   }
 };

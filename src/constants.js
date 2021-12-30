@@ -60,6 +60,11 @@ const CATEGORIES = [
   `Железо`
 ];
 
+const ExitCode = {
+  success: 0,
+  failure: 1
+};
+
 module.exports = {
   DEFAULT_COMMAND,
   TITLES,
@@ -68,5 +73,6 @@ module.exports = {
   CATEGORIES,
   DEFAULT_COUNT,
   minDay,
-  maxDay
+  maxDay,
+  ExitCode
 };
