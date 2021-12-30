@@ -44,10 +44,6 @@ const ANNOUNCES = [
 
 const DEFAULT_COUNT = 1;
 
-const minDay = 0;
-
-const maxDay = 90;
-
 const CATEGORIES = [
   `Деревья`,
   `За жизнь`,
@@ -72,7 +68,5 @@ module.exports = {
   ANNOUNCES,
   CATEGORIES,
   DEFAULT_COUNT,
-  minDay,
-  maxDay,
   ExitCode
 };

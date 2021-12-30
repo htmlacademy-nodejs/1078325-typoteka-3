@@ -1,13 +1,14 @@
 'use strict';
 
 const fs = require(`fs`);
-const {FILE_NAME, TITLES, CATEGORIES, ANNOUNCES, DEFAULT_COUNT, minDay, maxDay, ExitCode} = require(`../../constants`);
-const {getRandomDate, createRandomText, getRandomElementOfArray} = require(`../../utils`);
+const {FILE_NAME, TITLES, CATEGORIES, ANNOUNCES, DEFAULT_COUNT, ExitCode} = require(`../../constants`);
+const {getRandomDateOfLastMonths, createRandomText, getRandomElementOfArray} = require(`../../utils`);
+
 
 const generatePublications = (count) => {
   return new Array(count).fill({}).map(() => ({
     title: getRandomElementOfArray(TITLES),
-    createdDate: getRandomDate(minDay, maxDay),
+    createdDate: getRandomDateOfLastMonths(3),
     announce: createRandomText(ANNOUNCES, 5),
     fullText: createRandomText(ANNOUNCES, ANNOUNCES.length - 1),
     category: getRandomElementOfArray(CATEGORIES)
