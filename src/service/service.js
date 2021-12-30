@@ -1,10 +1,10 @@
 'use strict';
 
-const { Cli } = require('./cli');
-const { DEFAULT_COMMAND } = require('../constants');
+const {Cli} = require(`./cli`);
+const {DEFAULT_COMMAND} = require(`../constants`);
 
 const userArguments = process.argv.slice(2);
-const [ userCommand ] = userArguments;
+const [userCommand] = userArguments;
 
 if (userArguments.length === 0 || !Cli[userCommand]) {
   Cli[DEFAULT_COMMAND].run();
